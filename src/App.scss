@@ -1,0 +1,230 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #333;
+}
+
+.game-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  color: white;
+
+  h1 {
+    margin-bottom: 20px;
+    font-size: 3em;
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  button {
+    margin: 10px;
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: slideIn 0.5s forwards;
+
+    &:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+
+    &:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+  }
+}
+
+.game-board {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+
+  .grid-row {
+    display: flex;
+
+    .grid-cell {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #333;
+
+      &.wall {
+        background-color: blue;
+      }
+
+      &.path {
+        background-color: black;
+      }
+
+      &.fixed {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+
+      @media screen and (max-width: 768px) {
+        width: 25px;
+        height: 25px;
+      }
+
+      @media screen and (max-width: 400px) {
+        width: 22px;
+        height: 22px;
+      }
+    }
+
+    .player {
+      width: 100%;
+      height: 100%;
+      background-color: white;
+    }
+
+    .minotaur {
+      width: 100%;
+      height: 100%;
+      background-color: brown;
+    }
+  }
+}
+
+.controls {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+
+  @media (max-width: 1068px) {
+    display: flex;
+  }
+
+  .controls-down {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .controls-up {
+    display: flex;
+    justify-content: center;
+  }
+
+  .arrow-up,
+  .arrow-down,
+  .arrow-left,
+  .arrow-right {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-family: "Press Start 2P", cursive;
+    border-radius: 5px;
+  }
+}
+
+.back-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 50%;
+  border: none;
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      margin: 0 0 20px;
+    }
+
+    button {
+      margin: 10px;
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+  }
+}
+
+.save-button {
+  margin-top: 20px;
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #218838;
+  }
+}
+
+.edit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
